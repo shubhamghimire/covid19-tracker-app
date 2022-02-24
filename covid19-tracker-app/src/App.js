@@ -42,7 +42,9 @@ function App() {
   return (
     <div className="app">
       <div className="app_header">
+        {/* Header */}
         <h1>COVID-19 Tracker</h1>
+        {/* Title + Select input dropdown field */}
         <FormControl className="app_dropdown">
           <Select
             variant="outlined"
@@ -57,12 +59,14 @@ function App() {
             }
           </Select>
         </FormControl>
-        {/* Header */}
-        {/* Title + Select input dropdown field */}
 
-        {/* InfoBoxes */}
-        {/* InfoBoxes */}
-        {/* InfoBoxes */}
+        <div className="app_stats">
+          {/* InfoBoxes title="Corona Virus Cases" */}
+          {/* InfoBoxes title='Coronavirus Recoveries */}
+          {/* InfoBoxes title='Coronavirus Deaths*/}
+        </div>
+
+
 
         {/* Table */}
         {/* Graph */}
