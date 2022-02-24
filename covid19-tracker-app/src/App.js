@@ -1,8 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import { MenuItem, FormControl, Select, } from "@material-ui/core"
 import './App.css';
 
 function App() {
+  const [countries, setCountries] = useState([
+    'Nepal', 'Japan', 'Korea'
+  ]);
+
+
   return (
     <div className="app">
       <div className="app_header">
@@ -12,10 +17,11 @@ function App() {
             variant="outlined"
             value="abc"
           >
-            <MenuItem value="worldwide">Fruits</MenuItem>
-            <MenuItem value="worldwide">Apple</MenuItem>
-            <MenuItem value="worldwide">Banana</MenuItem>
-            <MenuItem value="worldwide">Grape</MenuItem>
+            {/* Loope through all the countries and list all the countries */}
+            {
+              countries.map(country =>
+                <MenuItem value={country}>{country}</MenuItem>)
+            }
           </Select>
         </FormControl>
         {/* Header */}
