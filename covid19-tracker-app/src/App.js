@@ -4,6 +4,7 @@ import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState('worldwide');
 
   // https://disease.sh/v3/covid-19/countries
 
@@ -30,7 +31,13 @@ function App() {
         });
     };
     getCountriesData();
-  }, [countries])
+  }, [])
+
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+    console.log("Heyy>>>", countryCode);
+    setCountry(countryCode);
+  };
 
   return (
     <div className="app">
@@ -39,12 +46,14 @@ function App() {
         <FormControl className="app_dropdown">
           <Select
             variant="outlined"
-            value="abc"
+            onChange={onCountryChange}
+            value={country}
           >
+            <MenuItem value="worldwide">WorldWide</MenuItem>
             {/* Loope through all the countries and list all the countries */}
             {
-              countries.map(country =>
-                <MenuItem value={country.value}>{country.name}</MenuItem>)
+              countries.map((country =>
+                <MenuItem value={country.value}>{country.name}</MenuItem>))
             }
           </Select>
         </FormControl>
