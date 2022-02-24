@@ -1,7 +1,7 @@
 // Type 'rfce' to create react functional component
 import React from 'react'
 
-function InfoBox() {
+function InfoBox({ title, cases, total }) {
     return (
         <div>
 
