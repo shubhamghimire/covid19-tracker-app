@@ -7,6 +7,7 @@ import './App.css';
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
+  const [countryInfo, setCountryInfo] = useState({});
 
   // https://disease.sh/v3/covid-19/countries
 
@@ -42,14 +43,26 @@ function App() {
 
     // Ternary operator to retrieve worldwide data if worldwide is selected and
     // specific country data if specific country is selected
-    const url = countryCode == 'worldwide' ? 'https://disease.sh/v3/covid-19/countries/' : `https://disease.sh/v3/covid-19/countries/${countryCode}`
+    const url = countryCode == 'worldwide'
+      ? 'https://disease.sh/v3/covid-19/countries/'
+      : `https://disease.sh/v3/covid-19/countries/${countryCode}`
 
+    await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setCountry(countryCode);
+
+        // All of the data from the country response
+        setCountryInfo(data);
+      })
     // Getting Worldwide data
     // https://disease.sh/v3/covid-19/countries/
 
     // Getting a specific country data
     // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE]
   };
+
+  console.log("COUNTRY INFO >>>", countryInfo);
 
   return (
     <div className="app">
