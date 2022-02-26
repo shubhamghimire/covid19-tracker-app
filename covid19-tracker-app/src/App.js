@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react"
-import { MenuItem, FormControl, Select, } from "@material-ui/core"
-import InfoBox from './components/InfoBox'
+import React, { useEffect, useState } from "react";
+import { MenuItem, FormControl, Select, } from "@material-ui/core";
+import InfoBox from './components/InfoBox';
+import Map from './components/Map'
 import './App.css';
 
 function App() {
@@ -80,7 +81,7 @@ function App() {
 
       {/* Map */}
 
-
+      <Map />
     </div>
 
   );
