@@ -79,7 +79,6 @@ function App() {
 
         <Map />
       </div>
-
       <Card className="app_right">
         <CardContent>
           <h3>Live Cases by Country</h3>
