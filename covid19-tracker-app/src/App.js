@@ -39,6 +39,16 @@ function App() {
     const countryCode = event.target.value;
     console.log("Heyy>>>", countryCode);
     setCountry(countryCode);
+
+    // Ternary operator to retrieve worldwide data if worldwide is selected and
+    // specific country data if specific country is selected
+    const url = countryCode == 'worldwide' ? 'https://disease.sh/v3/covid-19/countries/' : `https://disease.sh/v3/covid-19/countries/${countryCode}`
+
+    // Getting Worldwide data
+    // https://disease.sh/v3/covid-19/countries/
+
+    // Getting a specific country data
+    // https://disease.sh/v3/covid-19/countries/[COUNTRY_CODE]
   };
 
   return (
