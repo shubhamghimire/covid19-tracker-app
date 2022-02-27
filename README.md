@@ -3,7 +3,7 @@
 ## Intro
 - An application to track the covid cases worldwide interactively.
 - Used 'disease.sh - Open Disease Data API' for the covid cases data.
-- Used technology are React JS, Material UI, Firebase database etc.
+- Used technology are React JS, Material UI, Firebase. 
 
 ## Development Procedure
 
