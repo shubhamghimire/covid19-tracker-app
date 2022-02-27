@@ -15,6 +15,14 @@ function App() {
   // based a given condition
 
   useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then(response => response.json())
+      .then(data => {
+        setCountryInfo(data);
+      })
+  })
+
+  useEffect(() => {
     // The code inside here will run once
     // When the component loads and not again
     // async -> send a request to a server, wait for it, do something with it
@@ -88,14 +96,14 @@ function App() {
         </div>
 
         <div className="app_stats">
+          {/* InfoBoxes title="Corona Virus Cases" */}
           <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
 
+          {/* InfoBoxes title='Coronavirus Recoveries */}
           <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
 
-          <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
-          {/* InfoBoxes title="Corona Virus Cases" */}
-          {/* InfoBoxes title='Coronavirus Recoveries */}
           {/* InfoBoxes title='Coronavirus Deaths*/}
+          <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
         </div>
 
         {/* Map */}
