@@ -3,6 +3,7 @@ import { MenuItem, FormControl, Select, Card, CardContent } from "@material-ui/c
 import InfoBox from './components/InfoBox';
 import Map from './components/Map'
 import Table from './components/Table'
+import { sortData } from './components/util'
 import './App.css';
 
 function App() {
@@ -40,7 +41,9 @@ function App() {
               name: country.country,  // Japan, United Kingdom, Nepal
               value: country.countryInfo.iso2 //JPN, UK, NP
             }));
-          setTableData(data);
+
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
