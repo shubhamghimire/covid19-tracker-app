@@ -3,6 +3,7 @@ import { MenuItem, FormControl, Select, Card, CardContent } from "@material-ui/c
 import InfoBox from './components/InfoBox';
 import Map from './components/Map'
 import Table from './components/Table'
+import LineGraph from './components/LineGraph'
 import { sortData } from './components/util'
 import './App.css';
 
