@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { MenuItem, FormControl, Select, Card, CardContent } from "@material-ui/core";
 import InfoBox from './components/InfoBox';
 import Map from './components/Map'
+import Table from './components/Table'
 import './App.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
-  const [tableData, setTableData] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   // https://disease.sh/v3/covid-19/countries
 
