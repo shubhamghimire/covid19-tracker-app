@@ -8,6 +8,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState({});
 
   // https://disease.sh/v3/covid-19/countries
 
@@ -20,7 +21,7 @@ function App() {
       .then(data => {
         setCountryInfo(data);
       })
-  })
+  }, [])
 
   useEffect(() => {
     // The code inside here will run once
@@ -38,6 +39,7 @@ function App() {
               name: country.country,  // Japan, United Kingdom, Nepal
               value: country.countryInfo.iso2 //JPN, UK, NP
             }));
+          setTableData(data);
           setCountries(countries);
         });
     };
@@ -51,7 +53,7 @@ function App() {
 
     // Ternary operator to retrieve worldwide data if worldwide is selected and
     // specific country data if specific country is selected
-    const url = countryCode == 'worldwide'
+    const url = countryCode === 'worldwide'
       ? 'https://disease.sh/v3/covid-19/countries/'
       : `https://disease.sh/v3/covid-19/countries/${countryCode}`
 
@@ -112,10 +114,12 @@ function App() {
       </div>
       <Card className="app_right">
         <CardContent>
-          <h3>Live Cases by Country</h3>
           {/* Table */}
-          <h3>WorldWide New Cases</h3>
+          <h3>Live Cases by Country</h3>
+          <Table countries={tableData} />
+
           {/* Graph */}
+          <h3>WorldWide New Cases</h3>
         </CardContent>
       </Card>
 
