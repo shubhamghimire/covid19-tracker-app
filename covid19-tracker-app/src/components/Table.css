@@ -5,6 +5,15 @@
     color: #6a5d5d;
 }
 
+.table tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table td {
+    padding: 0.5rem;
+}
+
 /* In the table rows highlighting every odd row of the 
 table with gray */
 .table tr:nth-of-type(odd) {
