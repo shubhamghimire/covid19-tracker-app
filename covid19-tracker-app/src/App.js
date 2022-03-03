@@ -72,6 +72,8 @@ function App() {
 
         // All of the data from the country response
         setCountryInfo(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long])
       })
     // Getting Worldwide data
     // https://disease.sh/v3/covid-19/countries/
