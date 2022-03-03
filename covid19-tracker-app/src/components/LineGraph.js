@@ -1,56 +1,133 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+
 import { Line } from "react-chartjs-2";
 
-function LineGraph() {
-    const [data, setData] = useState({});
+import numeral from "numeral";
 
-    // Organizing historical data to parse into Line chart
-    const buildChartData = (data, casesType = "cases") => {
-        const chartData = [];
-        let lastDataPoint;
 
-        for (let date in data.cases) {
-            if (lastDataPoint) {
-                const newDataPoint = {
-                    x: date,
-                    // Subtracting previous days cases from today's cases
-                    // So that we can get new cases
-                    y: data['cases'][date] - lastDataPoint
-                }
+//  ***************** Chat options : 
 
-                chartData.push(newDataPoint);
-            }
-            lastDataPoint = data[casesType][date];
-        }
-        console.log("Chart Data>>>", chartData)
-        return chartData;
+const options = {
+
+    legend: {
+        display: false,
+    },
+    elements: {
+        point: {
+            radius: 0,
+        },
+    },
+    maintainAspectRatio: false,
+    tooltips: {
+        mode: "index",
+        intersect: false,
+        callbacks: {
+            label: function (tooltipItem, data) {
+                return numeral(tooltipItem.value).format("+0,0");
+            },
+        },
+    },
+    scales: {
+        xAxes: [
+            {
+                type: "time",
+                time: {
+                    format: "MM/DD/YY",
+                    tooltipFormat: "ll",
+                },
+            },
+        ],
+        yAxes: [
+            {
+                gridLines: {
+                    display: false,
+                },
+                ticks: {
+                    callback: function (value, index, values) {
+                        return numeral(value).format("0a");
+                    },
+
+                },
+            },
+        ],
     }
 
-    // Getting all historical data for last 50 days
-    // https://disease.sh/v3/covid-19/historical/all?lastdays=120
+}
+
+// ****************  build Chart Data : 
+
+const buildChartData = (data, casesType = "cases") => {
+    const chartData = [];
+    let lastDataPoint;
+
+    for (let date in data.cases) {
+
+        if (lastDataPoint) {
+            const newDataPoint = {
+                x: date,
+                y: data[casesType][date] - lastDataPoint,
+            };
+            chartData.push(newDataPoint);
+        }
+        lastDataPoint = data[casesType][date];
+
+    }
+
+    return chartData;
+}
+
+
+// **************** LineGraph Main Function : 
+
+function LineGraph() {
+
+    //  ********* States :
+
+    const [data, setData] = useState({});
+
+
+    // ***************** useEffects :
 
     useEffect(() => {
-        fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
-            .then(response => response.json())
-            .then(data => {
-                console.log("Graph Data>>>", data);
-                const chartData = buildChartData(data);
-                setData(chartData);
-            })
-    }, [])
+        const fetchData = async () => {
+            await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
+                .then(respense => respense.json())
+                .then(data => {
 
+                    console.log(data);
+                    let chartData = buildChartData(data, "cases");
+
+                    console.log(chartData);
+                    setData(chartData);
+                });
+        }
+
+        fetchData();
+
+    }, []);
+
+    // ************* LineGraph returns : 
 
     return (
-        <div>
-            {/* Line data options */}
-            <h1>This is Graph!</h1>
-            <Line data={{
-                datasets: [{
-                    data: data,
-                    backgroundColor: "rgba(204, 16, 52, 0.5)",
-                    borderColor: "#CC1034",
-                }]
-            }} />
+        <div >
+            {/* Check if data exist */}
+            { data?.length > 0 && (
+                <Line
+                    options={options}
+                    data={{
+                        datasets: [
+                            {
+                                backgroundColor: "rgba(204 , 16 , 52 , 0.5)",
+                                borderColor: "#CC1034",
+                                data: data
+                            }
+                        ],
+                    }}
+                />
+
+
+            )}
+
         </div>
     )
 }
