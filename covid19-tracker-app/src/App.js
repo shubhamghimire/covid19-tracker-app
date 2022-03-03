@@ -122,7 +122,7 @@ function App() {
 
         {/* Map */}
 
-        <Map countrues={mapCountries} center={mapCenter} zoom={mapZoom} />
+        <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
       </div>
       <Card className="app_right">
         <CardContent>
