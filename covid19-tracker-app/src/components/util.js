@@ -5,15 +5,15 @@ import { Circle, Popup } from "react-leaflet";
 const casesTypeColors = {
     cases: {
         hex: "#CC1034",
-        multiplier: 800,
+        multiplier: 100,
     },
     recovered: {
         hex: "#7dd71d",
-        multiplier: 1200,
+        multiplier: 150,
     },
     deaths: {
         hex: "#fb4443",
-        multiplier: 2000,
+        multiplier: 250,
     },
 };
 
@@ -48,7 +48,16 @@ export const showDataOnMap = (data, casesType = 'cases') =>
             }
         >
             <Popup>
-                <h1>I am a popup.</h1>
+                <div>
+                    <div
+                        style={{ backgroundImage: `url(${country.countryInfo.flag})` }} />
+
+                    <div>{country.country}</div>
+                    <div>Cases: {numeral(country.cases).format("0,0")}</div>
+                    <div>Cases: {numeral(country.recovered).format("0,0")}</div>
+                    <div>Cases: {numeral(country.deaths).format("0,0")}</div>
+
+                </div>
             </Popup>
 
         </Circle>
