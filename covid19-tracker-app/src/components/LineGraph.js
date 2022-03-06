@@ -56,7 +56,7 @@ const options = {
 
 // ****************  build Chart Data : 
 
-const buildChartData = (data, casesType = "cases") => {
+const buildChartData = (data, casesType) => {
     const chartData = [];
     let lastDataPoint;
 
@@ -79,7 +79,7 @@ const buildChartData = (data, casesType = "cases") => {
 
 // **************** LineGraph Main Function : 
 
-function LineGraph() {
+function LineGraph({ casesType }) {
 
     //  ********* States :
 
@@ -95,7 +95,7 @@ function LineGraph() {
                 .then(data => {
 
                     console.log(data);
-                    let chartData = buildChartData(data, "cases");
+                    let chartData = buildChartData(data, casesType);
 
                     console.log(chartData);
                     setData(chartData);
@@ -104,7 +104,7 @@ function LineGraph() {
 
         fetchData();
 
-    }, []);
+    }, [casesType]);
 
     // ************* LineGraph returns : 
 
