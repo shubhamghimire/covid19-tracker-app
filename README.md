@@ -1,9 +1,14 @@
 # covid19-tracker-app
+https://covid19-tracker-app-9b77f.web.app/
+
+![Covid-19-Tracker](screenshot/app.png)
 
 ## Intro
 - An application to track the covid cases worldwide interactively.
 - Used 'disease.sh - Open Disease Data API' for the covid cases data.
 - Used technology are React JS, Material UI, Firebase. 
+
+
 
 ## Development Procedure
 
@@ -19,5 +24,3 @@
 10. Styling
 11. Deploy
 
-## Successfully Deployed in Firebase
-- URL: https://covid19-tracker-app-9b77f.web.app/
