@@ -112,13 +112,13 @@ function App() {
 
         <div className="app_stats">
           {/* InfoBoxes title="Corona Virus Cases" */}
-          <InfoBox onClick={e => setCasesType('cases')} title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={countryInfo.cases} />
+          <InfoBox active={casesType === 'cases'} onClick={e => setCasesType('cases')} title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={countryInfo.cases} />
 
           {/* InfoBoxes title='Coronavirus Recoveries */}
-          <InfoBox onClick={e => setCasesType('recovered')} title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={countryInfo.recovered} />
+          <InfoBox active={casesType === 'recovered'} onClick={e => setCasesType('recovered')} title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={countryInfo.recovered} />
 
           {/* InfoBoxes title='Coronavirus Deaths*/}
-          <InfoBox onClick={e => setCasesType('deaths')} title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={countryInfo.deaths} />
+          <InfoBox active={casesType === 'deaths'} onClick={e => setCasesType('deaths')} title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={countryInfo.deaths} />
         </div>
 
         {/* Map */}
