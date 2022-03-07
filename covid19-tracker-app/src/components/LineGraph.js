@@ -79,7 +79,7 @@ const buildChartData = (data, casesType) => {
 
 // **************** LineGraph Main Function : 
 
-function LineGraph({ casesType }) {
+function LineGraph({ casesType, ...props }) {
 
     //  ********* States :
 
@@ -109,7 +109,7 @@ function LineGraph({ casesType }) {
     // ************* LineGraph returns : 
 
     return (
-        <div >
+        <div className={props.className}>
             {/* Check if data exist */}
             { data?.length > 0 && (
                 <Line
