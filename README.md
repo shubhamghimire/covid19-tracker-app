@@ -18,3 +18,6 @@
 9. Create Map
 10. Styling
 11. Deploy
+
+## Successfully Deployed in Firebase
+- URL: https://covid19-tracker-app-9b77f.web.app/
